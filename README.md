@@ -5,7 +5,7 @@ This project was created as part of my coursework for the Udacity [Full Stack We
 
 ### Prerequisites
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads)<br>
-[Vagrant](https://www.vagrantup.com/downloads.html),br>
+[Vagrant](https://www.vagrantup.com/downloads.html),<br>
 Virtual Machine Config [FSND-Virtual-Machine.zip ](https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59822701_fsnd-virtual-machine/fsnd-virtual-machine.zip)
 
 [PostgreSQL](https://www.postgresql.org/docs/9.6/static/tutorial-install.html) Server
