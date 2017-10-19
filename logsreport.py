@@ -2,6 +2,7 @@
 from datetime import datetime
 import psycopg2
 
+
 def connect(database_name="news"):
     """Connect to the PostgreSQL database.  Returns a database connection."""
     try:
@@ -11,7 +12,8 @@ def connect(database_name="news"):
     except psycopg2.Error:
         print "Unable to connect to database"
         exit(1)
-        
+
+
 def get_query_results(query):
     db, c = connect()
     c.execute(query)
@@ -19,13 +21,15 @@ def get_query_results(query):
     db.close()
     return results
 
+
 def get_top_articles():
     s = "\nTop three most viewed articles:\n"
-    query = "select * from article_views limit 3;";
+    query = "select * from article_views limit 3;"
     results = get_query_results(query)
     for row in results:
-        s +=  " * " + "\"" + str(row[0]) + "\" -- " + str(row[1]) + " views\n"
+        s += " * " + "\"" + str(row[0]) + "\" -- " + str(row[1]) + " views\n"
     return s
+
 
 def get_top_authors():
     s = "\nMost popular authors:\n"
@@ -35,6 +39,7 @@ def get_top_authors():
         s += " * " + str(row[0]) + " -- " + str(row[1]) + " views\n"
     return s
 
+
 def get_view_errors():
     s = "\nDays where more than 1% of requests led to errors:\n"
     query = "select * from error_percent where error_percent > 1;"
@@ -43,11 +48,13 @@ def get_view_errors():
         s += " * " + str(row[0]) + " -- " + str(row[1]) + "% errors\n"
     return s
 
+
 def print_to_file(file_name, text):
     f = open(file_name, "w")
     f.write(text)
     f.close()
-    
+
+
 def get_report(date):
     report = "\nReport Date: " + date + "\n"
     report += get_top_articles()
@@ -55,10 +62,10 @@ def get_report(date):
     report += get_view_errors()
     return report
 
+
 if __name__ == '__main__':
     db, c = connect()  # connect to database
 
     date = datetime.now().strftime('%Y-%m-%d %H:%M')  # get current datetime
 
-    print_to_file("logs_report_" + date, get_report(date))  # get the report and print to file
-   
+    print_to_file("logs_report_" + date, get_report(date))  # print to file
