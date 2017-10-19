@@ -25,10 +25,12 @@ AS
 ```
 ### Create error_percent view
 Enter this query to create a new view called error_percent which will get the data from the requests view and the errors view to calculate the percentage of article request errors per day.
+```
 CREATE OR REPLACE view error_percent
 AS
   SELECT requests.date,
          Round(( 100.0 * errors.count / requests.count ), 2) AS error_percent
   FROM   requests,
          errors
-  WHERE  errors.date = requests.date; 
+  WHERE  errors.date = requests.date;
+ ``` 
