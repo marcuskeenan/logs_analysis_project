@@ -60,13 +60,12 @@ def get_report(date):
     report += get_top_articles()
     report += get_top_authors()
     report += get_view_errors()
+    print(report)
     return report
 
 
 if __name__ == '__main__':
     db, c = connect()  # connect to database
-
     date = datetime.now().strftime('%Y-%m-%d %H:%M')  # get current datetime
-
     print_to_file("logs_report_" + date, get_report(date))  # print to file
 
