@@ -69,3 +69,4 @@ if __name__ == '__main__':
     date = datetime.now().strftime('%Y-%m-%d %H:%M')  # get current datetime
 
     print_to_file("logs_report_" + date, get_report(date))  # print to file
+
