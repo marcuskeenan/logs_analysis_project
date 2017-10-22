@@ -68,7 +68,7 @@ if __name__ == '__main__':
     date = datetime.now().strftime('%Y-%m-%d %H:%M')  # get current datetime
     report = get_report(date)  # build the report
     print report  # print report to terminal
-    print_to_file("log_reports/log_report_" + date, report)  # print report to file
+    print_to_file("log_reports/log_report_" + date, report)  # print report
     db.close()  # close db connection
     print "Report created successfully :)"
 
