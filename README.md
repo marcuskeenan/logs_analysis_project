@@ -38,7 +38,7 @@ The database contains three tables: articles, authors and log. These tables are 
  public | log      | table | vagrant
  ```
 
-### Creating custom database views
+### Create custom database views
 Important! You must create the following views! The python code queries these database views and wll not function without!
 
 
