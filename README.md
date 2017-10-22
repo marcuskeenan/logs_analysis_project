@@ -1,6 +1,6 @@
 # logs_analysis_project
 ## About
-This project was created as part of my coursework for the Udacity [Full Stack Web Developer Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004). The goal was to create a reporting tool that prints out reports (in plain text) based on the data in the database. This reporting tool consists of a Python program using the [psycopg2](http://initd.org/psycopg/docs/) module to connect to the PostgreSQL database called "news". 
+This project was created as part of my coursework for the Udacity [Full Stack Web Developer Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004). The goal was to create a reporting tool that prints out reports (in plain text) based on the data in the database. This reporting tool consists of a Python program using the [psycopg2](http://initd.org/psycopg/docs/) module to connect to the PostgreSQL database. 
 The database contains three tables: articles, authors and log. These tables are a representation of a log file that stores web request for the related articles.
 ```          List of relations
  Schema |   Name   | Type  |  Owner  
