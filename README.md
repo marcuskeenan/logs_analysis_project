@@ -64,3 +64,11 @@ Run this query to create a new view called error_percent which will get the data
 ```
 CREATE OR REPLACE view error_percent AS SELECT requests.date, Round(( 100.0 * errors.count / requests.count ), 2) AS error_percent FROM requests, errors WHERE errors.date = requests.date;
  ``` 
+ ## Run this code
+ open you terminal and enter:
+ ```
+ git clone https://github.com/sigwaveLabs/logs_analysis_project.git
+ ```
+ cd to the  project ``` cd log_analysis_project``` and run ```python logsreport.py``` 
+ 
+ After running the code, you will see the report print to the terminal and create a new plain text file in the /log_reports directory.
