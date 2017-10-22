@@ -2,7 +2,7 @@
 ## About
 This project was created as part of my coursework for the Udacity [Full Stack Web Developer Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004). The goal was to create a reporting tool that prints out reports (in plain text) based on the data in the database. This reporting tool consists of a Python program using the [psycopg2](http://initd.org/psycopg/docs/) module to connect to the PostgreSQL database. 
 
-After initializing the database with the sample data (see Prerequisites below), creating a few custom views and cloning this repo, you will be able to run the python code. The code will run a few queries to create a report that will print to the console and create a new plain text file in you log_reports directory. This example uses a preconfigured Linux VM running on VirtualBox with Vagrant.
+After initializing the database with the sample data (see database setup below), creating a few custom views and cloning this repo, you will be able to run the python code. The code will run a few queries to create a report that will print to the console and create a new plain text file in you log_reports directory. This example uses a preconfigured Linux VM running on VirtualBox with Vagrant.
 There are there questions answered by the code:
 1. What are the most popular three articles of all time?
 2. Who are the most popular article authors of all time?
