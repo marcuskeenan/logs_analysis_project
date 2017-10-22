@@ -71,3 +71,4 @@ if __name__ == '__main__':
     db.close()  # close db connection
     print "Report created successfully:)"
 
+
