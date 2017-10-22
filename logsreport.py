@@ -8,22 +8,21 @@ def connect(database_name="news"):
     try:
         db = psycopg2.connect("dbname={}".format(database_name))
         c = db.cursor()
+        print "Successfully connected to the '%s' database " % database_name
         return db, c
     except psycopg2.Error:
-        print "Unable to connect to database"
+        print "Unable to connect to database named '%s' " % database_name
         exit(1)
 
 
 def get_query_results(query):
-    db, c = connect()
     c.execute(query)
     results = c.fetchall()
-    db.close()
     return results
 
 
 def get_top_articles():
-    s = "\nTop three most viewed articles:\n"
+    s = "\nThe top three most viewed articles are:\n"
     query = "select * from article_views limit 3;"
     results = get_query_results(query)
     for row in results:
@@ -32,7 +31,7 @@ def get_top_articles():
 
 
 def get_top_authors():
-    s = "\nMost popular authors:\n"
+    s = "\nThe top three most popular authors are:\n"
     query = "select * from author_views limit 3;"
     results = get_query_results(query)
     for row in results:
@@ -41,7 +40,7 @@ def get_top_authors():
 
 
 def get_view_errors():
-    s = "\nDays where more than 1% of requests led to errors:\n"
+    s = "\nThe days where more than 1% of requests led to errors are:\n"
     query = "select * from error_percent where error_percent > 1;"
     results = get_query_results(query)
     for row in results:
@@ -56,16 +55,19 @@ def print_to_file(file_name, text):
 
 
 def get_report(date):
-    report = "\nReport Date: " + date + "\n"
+    report = "\n As of " + date + ":\n"
     report += get_top_articles()
     report += get_top_authors()
     report += get_view_errors()
-    print(report)
     return report
 
 
 if __name__ == '__main__':
+
     db, c = connect()  # connect to database
     date = datetime.now().strftime('%Y-%m-%d %H:%M')  # get current datetime
-    print_to_file("logs_report_" + date, get_report(date))  # print to file
-
+    report = get_report(date)  # build the report
+    print report  # print report to terminal
+    print_to_file("logs_report_" + date, report)  # print report to file
+    db.close()  # close db connection
+    print "Report created successfully:)"
