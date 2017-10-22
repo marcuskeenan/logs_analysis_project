@@ -70,3 +70,4 @@ if __name__ == '__main__':
     print_to_file("logs_report_" + date, report)  # print report to file
     db.close()  # close db connection
     print "Report created successfully:)"
+
