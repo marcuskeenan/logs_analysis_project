@@ -71,3 +71,5 @@ CREATE OR REPLACE view error_percent AS SELECT requests.date, Round(( 100.0 * er
  cd to the  project ``` cd log_analysis_project``` and run ```python logsreport.py``` 
  
  After running the code, you will see the report print to the terminal and create a new plain text file in the /log_reports directory.
+ 
+ That's it:)
