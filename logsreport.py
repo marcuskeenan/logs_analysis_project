@@ -7,10 +7,10 @@ def connect(database_name="news"):
     try:
         db = psycopg2.connect("dbname={}".format(database_name))
         c = db.cursor()
-        print "Successfully connected to the '%s' database " % database_name
+        print "Successfully connected to the '%s' database." % database_name
         return db, c
     except psycopg2.Error:
-        print "Unable to connect to database named '%s' " % database_name
+        print "Unable to connect to database '%s' database." % database_name
         exit(1)
 
 
@@ -54,7 +54,8 @@ def print_to_file(file_name, text):
 
 
 def get_report(date):
-    report = "\n As of " + date + ":\n"
+    report = ""
+    report = "\nAs of " + date + ":\n"
     report += get_top_articles()
     report += get_top_authors()
     report += get_view_errors()
@@ -67,7 +68,7 @@ if __name__ == '__main__':
     date = datetime.now().strftime('%Y-%m-%d %H:%M')  # get current datetime
     report = get_report(date)  # build the report
     print report  # print report to terminal
-    print_to_file("logs_report_" + date, report)  # print report to file
+    print_to_file("log_reports/log_report_" + date, report)  # print report to file
     db.close()  # close db connection
-    print "Report created successfully:)"
+    print "Report created successfully :)"
 
