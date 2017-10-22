@@ -19,7 +19,7 @@ Virtual Machine Config [FSND-Virtual-Machine.zip ](https://d17h27t6h515a5.cloudf
 Once you have the Vagrant VM running on VirtualBox with the FSDN-Virtual-Machine running, you are ready to setup the database with the sample data.
 
 ### Setup the database
-Download the data [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip). You will need to unzip this file after downloading it. The file inside is called newsdata.sql. 
+Download the sample data [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip). You will need to unzip this file after downloading it. The file inside is called newsdata.sql. 
 To build the reporting tool, you'll need to load the site's data into your local database. 
 To load the data, cd into the directory and use the command psql -d news -f newsdata.sql.
 Here's what this command does:
