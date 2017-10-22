@@ -1,5 +1,16 @@
 # logs_analysis_project
-This project was created as part of my coursework for the Udacity [Full Stack Web Developer Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004). The project was to create a reporting tool that prints out reports (in plain text) based on the data in the database. This reporting tool is a Python program using the [psycopg2](http://initd.org/psycopg/docs/) module to connect to the PostgreSQL database called "news". After initializing the database with the sample data (see Prerequisites below) and creating a few custom views, you will be able to run the python code. The code will run a few queries to create a report that will print to the console and create a new plain text file in you directory. This example uses a preconfigured Linux VM running on VirtualBox with Vagrant.
+## About
+This project was created as part of my coursework for the Udacity [Full Stack Web Developer Nanodegree](https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004). The goal was to create a reporting tool that prints out reports (in plain text) based on the data in the database. This reporting tool consists of a Python program using the [psycopg2](http://initd.org/psycopg/docs/) module to connect to the PostgreSQL database called "news". 
+The database contains three tables -articles, authors and log. These tables are a representation of a log file that stores request logs for the articles.
+```          List of relations
+ Schema |   Name   | Type  |  Owner  
+--------+----------+-------+---------
+ public | articles | table | vagrant
+ public | authors  | table | vagrant
+ public | log      | table | vagrant
+ ```
+
+After initializing the database with the sample data (see Prerequisites below) and creating a few custom views, you will be able to run the python code. The code will run a few queries to create a report that will print to the console and create a new plain text file in you directory. This example uses a preconfigured Linux VM running on VirtualBox with Vagrant.
 
 ## Getting Started
 
@@ -10,6 +21,9 @@ Virtual Machine Config [FSND-Virtual-Machine.zip ](https://d17h27t6h515a5.cloudf
 
 [PostgreSQL](https://www.postgresql.org/docs/9.6/static/tutorial-install.html) Server
 sample database file
+
+## Setup
+Once you have the Vagrant VM running on VirtualBox with the FSDN-Virtual-Machine running, you are ready to setup the database with the sample data.
 
 ### Setup the database
 Download the data [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip). You will need to unzip this file after downloading it. The file inside is called newsdata.sql. 
@@ -22,10 +36,10 @@ Here's what this command does:
     -f newsdata.sql — run the SQL statements in the file newsdata.sql
 ```
 Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data. 
-### Get this code
-Clone this repository
+
 ### Creating custom database views
-Important
+Important! In order to optimize performance and simplfy code, several database views were created. The python code queries these database views. 
+
 #### Create requests view
 Run this query to create a new view called requests which returns the total article request counts per day.
 ```
