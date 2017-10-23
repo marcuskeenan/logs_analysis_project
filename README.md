@@ -69,7 +69,7 @@ Run this query to create a new view called errors which returns the number of fa
 ```
 CREATE OR REPLACE view errors AS SELECT Count(*) AS count, Date(time) AS date FROM log WHERE status != '200 OK' GROUP BY date ORDER BY count DESC;
 ```
-#### Create error_percent view
+#### Create database view called "error_percent"
 Run this query to create a new view called error_percent which will get the data from the requests view and the errors view to calculate the percentage of article request errors per day.
 ```
 CREATE OR REPLACE view error_percent AS SELECT requests.date, Round(( 100.0 * errors.count / requests.count ), 2) AS error_percent FROM requests, errors WHERE errors.date = requests.date;
