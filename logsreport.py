@@ -17,12 +17,14 @@ def connect(database_name="news"):
 
 
 def get_query_results(query, c):
+    """Runs db query, pass in query string and cursor"""
     c.execute(query)
     results = c.fetchall()
     return results
 
 
 def get_top_articles(c):
+    """Returns string of the top three most viewed articles"""
     s = "\nThe top three most viewed articles are:\n"
     query = "select * from article_views limit 3;"
     results = get_query_results(query, c)
@@ -32,6 +34,7 @@ def get_top_articles(c):
 
 
 def get_top_authors(c):
+    """Returns string of the top three most popular authors"""
     s = "\nThe top three most popular authors are:\n"
     query = "select * from author_views limit 3;"
     results = get_query_results(query, c)
@@ -41,6 +44,7 @@ def get_top_authors(c):
 
 
 def get_view_errors(c):
+    """Returns string of the percentage of article request errors"""
     s = "\nThe days where more than 1% of requests led to errors are:\n"
     query = "select * from error_percent where error_percent > 1;"
     results = get_query_results(query, c)
@@ -50,12 +54,14 @@ def get_view_errors(c):
 
 
 def print_to_file(file_name, text):
+    """Print the report to a plain text file"""
     f = open(file_name, "w")
     f.write(text)
     f.close()
 
 
 def get_report(date, c):
+    """Returns string of report"""
     report = ""
     report = "\nAs of " + date + ":\n"
     report += get_top_articles(c)
@@ -65,6 +71,9 @@ def get_report(date, c):
 
 
 def main():
+    """Main function, open db connection, get the current datetime,
+    build the report, printsreport to the terminal, print report to text file,
+    colse db connection and print status"""
     db, c = connect()  # connect to database
     date = datetime.now().strftime('%Y-%m-%d %H:%M')  # get current datetime
     report = get_report(date, c)  # build the report
