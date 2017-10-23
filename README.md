@@ -52,19 +52,19 @@ psql news
 
 This will take you to the database command line. Here, run the following statements:
 
-#### Create article_views
+#### Create database view called "article_views"
 ```
 CREATE OR REPLACE view article_views AS SELECT title, count(title) AS views from articles, log WHERE log.path = concat('/article/',articles.slug) GROUP BY title ORDER BY views DESC;
 ```
-#### Create author_views
+#### Create database view called "author_views"
 ```
 CREATE OR REPLACE view author_views AS SELECT authors.name, count(articles.author) AS views from articles, log, authors WHERE log.path = concat('/article/',articles.slug) and articles.author = authors.id GROUP BY authors.name ORDER BY views DESC;
 ```
-#### Create requests view
+#### Create database view called "requests"
 ```
 CREATE OR REPLACE view requests AS SELECT Count(*) AS count, Date(time) AS date FROM log GROUP BY date ORDER  BY count DESC;
 ```
-#### Create errors view
+#### Create database view called "errors"
 Run this query to create a new view called errors which returns the number of failed article request counts per day.
 ```
 CREATE OR REPLACE view errors AS SELECT Count(*) AS count, Date(time) AS date FROM log WHERE status != '200 OK' GROUP BY date ORDER BY count DESC;
